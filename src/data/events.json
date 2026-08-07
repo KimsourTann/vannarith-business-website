@@ -1,0 +1,26 @@
+[
+  {
+    "src": "/events/1.jpg",
+    "alt": "event 1",
+    "title": "Event 1",
+    "description": "This is event 1"
+  },
+  {
+    "src": "/events/2.jpg",
+    "alt": "event 2",
+    "title": "Event 2",
+    "description": "This is event 2"
+  },
+  {
+    "src": "/events/3.jpg",
+    "alt": "event 3",
+    "title": "Event 3",
+    "description": "This is event 3"
+  },
+  {
+    "src": "/events/4.jpg",
+    "alt": "event 4",
+    "title": "Event 4",
+    "description": "This is event 4"
+  }
+]
