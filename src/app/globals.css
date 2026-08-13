@@ -11,17 +11,11 @@ body {
   height: 100%;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -30,24 +24,20 @@ html {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: #fbfaf6;
+  background: #f7f9fc;
+  background-image: radial-gradient(circle at 10% 0%, rgba(15, 99, 174, 0.06), transparent 28rem), radial-gradient(circle at 90% 20%, rgba(232, 163, 61, 0.07), transparent 24rem);
 }
 
-::selection {
-  background: #e8a33d;
-  color: #10233a;
-}
+::selection { background: #e8a33d; color: #10233a; }
 
-/* Eyebrow / label style used for section kickers and nav */
 .eyebrow {
   font-family: var(--font-mono);
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  font-size: 0.7rem;
-  font-weight: 500;
+  font-size: 0.68rem;
+  font-weight: 600;
 }
 
-/* Underline animation used in the header nav */
 .underline-animation,
 .underline-animation[data-active="true"] {
   position: relative;
@@ -56,118 +46,83 @@ body {
 
 .underline-animation::after {
   content: "";
-  display: block;
   position: absolute;
-  bottom: -6px;
+  left: 0;
+  bottom: -8px;
   width: 100%;
   height: 2px;
+  border-radius: 999px;
   background: #e8a33d;
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  transform: scale(0);
+  transform: scaleX(0);
   transform-origin: center;
+  transition: transform 250ms ease;
 }
 
-.underline-animation[data-active="true"]::after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -6px;
-  width: 100%;
-  height: 2px;
-  background: #e8a33d;
-  transform: scale(1);
-}
+.underline-animation[data-active="true"]::after,
+.underline-animation:hover::after { transform: scaleX(1); }
 
-.underline-animation:hover::after {
-  transform: scale(1);
-}
-
-/* Primary button - navy to gold sweep, echoes the brand mark */
 .button {
   font-weight: 600;
-  background: center/220%
-    linear-gradient(100deg, #0f63ae 0% 50%, #fbfaf6 50% 100%);
-  color: #fbfaf6;
-  background-position-x: 0%;
-  box-shadow: 0 0 0 2px #0f63ae inset;
-  transition:
-    background-position-x 300ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  background: #0f63ae;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(15, 99, 174, 0.22);
+  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
 }
 
 .button:hover:not(:disabled) {
-  background-position-x: 100%;
-  color: #0f63ae;
-  scale: 1.02;
+  background: #0b568f;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(15, 99, 174, 0.28);
 }
 
-.button:active:not(:disabled) {
-  box-shadow:
-    0 0 0 2px #0f63ae inset,
-    0 2px 12px color-mix(in lab, #0f63ae, #10233a);
-  transform: translateY(-3px) scale(1.02);
-}
+.button:active:not(:disabled) { transform: translateY(0); }
 
-/* Secondary / accent button - gold */
 .button-gold {
   font-weight: 600;
-  background: center/220%
-    linear-gradient(100deg, #e8a33d 0% 50%, #fbfaf6 50% 100%);
+  background: #e8a33d;
   color: #10233a;
-  background-position-x: 0%;
-  box-shadow: 0 0 0 2px #e8a33d inset;
-  transition:
-    background-position-x 300ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 8px 24px rgba(232, 163, 61, 0.2);
+  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
 }
 
 .button-gold:hover:not(:disabled) {
-  background-position-x: 100%;
-  scale: 1.02;
+  background: #d9902d;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(232, 163, 61, 0.28);
 }
 
-/* Signature texture: a faint dotted "circuit" field, echoing the logo's
-   circuit-and-stethoscope mark. Used sparingly on dark panels. */
 .circuit-field {
-  background-image: radial-gradient(currentColor 1.4px, transparent 1.4px);
+  background-image: radial-gradient(currentColor 1.2px, transparent 1.2px);
   background-size: 22px 22px;
+}
+
+.card-surface {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #e5ebf2;
+  box-shadow: 0 12px 35px rgba(16, 35, 58, 0.06);
+}
+
+.section-shell {
+  border: 1px solid #e5ebf2;
+  border-radius: 1.5rem;
+  background: rgba(255,255,255,.72);
+  box-shadow: 0 20px 55px rgba(16,35,58,.06);
+  backdrop-filter: blur(12px);
 }
 
 .swiper {
   --swiper-theme-color: #0f63ae;
-  --swiper-pagination-bullet-inactive-color: #ece6d6;
+  --swiper-pagination-bullet-inactive-color: #d8e1eb;
   padding-bottom: 2rem !important;
 }
 
-.swiper .swiper-pagination-bullet {
-  transition:
-    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.swiper .swiper-pagination-bullet-active {
-  transform: scale(1.25);
-}
-
+.swiper .swiper-pagination-bullet { transition: transform 220ms ease, background-color 220ms ease; }
+.swiper .swiper-pagination-bullet-active { transform: scale(1.25); }
 .swiper .swiper-button-next,
-.swiper .swiper-button-prev {
-  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
+.swiper .swiper-button-prev { transition: transform 220ms ease; }
 .swiper .swiper-button-next:hover,
-.swiper .swiper-button-prev:hover {
-  transform: scale(1.15);
-}
-
-.card-surface {
-  background: #ffffff;
-  border: 1px solid #ece6d6;
-}
+.swiper .swiper-button-prev:hover { transform: scale(1.12); }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  .text-balance { text-wrap: balance; }
 }
